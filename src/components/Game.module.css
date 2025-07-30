@@ -1,0 +1,43 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.game_info {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-color);
+}
+
+.symbol {
+  font-size: 28px;
+  line-height: 0px;
+}
+
+.symbol__x {
+  color: var(--symbol--x-color);
+}
+
+.symbol__o {
+  color: var(--symbol--o-color);
+}
+
+.game_field {
+  width: 280px;
+  height: 280px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.cell {
+  background-color: var(--bg-cell-color);
+  border: 0px solid transparent;
+  padding: 0;
+}
