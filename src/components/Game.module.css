@@ -14,19 +14,6 @@
   color: var(--text-color);
 }
 
-.symbol {
-  font-size: 28px;
-  line-height: 0px;
-}
-
-.symbol__x {
-  color: var(--symbol--x-color);
-}
-
-.symbol__o {
-  color: var(--symbol--o-color);
-}
-
 .game_field {
   width: 280px;
   height: 280px;

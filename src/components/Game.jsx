@@ -1,6 +1,7 @@
 import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
 import css from './Game.module.css';
 import { useState } from 'react';
+import { GameSymbol } from './GameSymbol';
 
 const computeWinner = cells => {
   const lines = [
@@ -26,17 +27,6 @@ export const Game = () => {
   const [cells, setCells] = useState(Array.from({ length: 9 }, () => null));
   const [currentStep, setCurrentStep] = useState(SYMBOL_X);
   const [winnerSequence, setWinnerSequence] = useState();
-
-  const getSymbolClassName = symbol => {
-    if (symbol === SYMBOL_O) return 'symbol__o';
-    if (symbol === SYMBOL_X) return 'symbol__x';
-    return '';
-  };
-  const renderSymbol = symbol => (
-    <span className={`${css.symbol} ${css[getSymbolClassName(symbol)]}`}>
-      {symbol}
-    </span>
-  );
 
   const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
   const isDraw = !winnerSequence && cells.filter(cell => cell).length === 9;
@@ -65,7 +55,7 @@ export const Game = () => {
     <div className={css.game}>
       <div className={css.game_info}>
         {isDraw ? 'Нічия' : winnerSequence ? 'Переможець:' : 'Хід: '}{' '}
-        {!isDraw && renderSymbol(winnerSymbol ?? currentStep)}
+        {!isDraw && <GameSymbol symbol={winnerSymbol ?? currentStep} />}
       </div>
       <div className={css.game_field}>
         {cells.map((symbol, index) => {
@@ -77,7 +67,7 @@ export const Game = () => {
               onClick={() => handleCellClick(index)}
               disabled={!!winnerSequence}
             >
-              {symbol ? renderSymbol(symbol) : null}
+              {symbol ? <GameSymbol symbol={symbol} /> : null}
             </button>
           );
         })}
