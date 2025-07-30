@@ -82,7 +82,7 @@ export const Game = () => {
           );
         })}
       </div>
-      {winnerSequence && (
+      {(winnerSequence || !cells.includes(null)) && (
         <button className={css.reset} type="button" onClick={handleResetClick}>
           Очистити
         </button>
