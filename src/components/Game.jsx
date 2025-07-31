@@ -2,6 +2,7 @@ import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
 import css from './Game.module.css';
 import { useState } from 'react';
 import { GameSymbol } from './GameSymbol';
+import { GameInfo } from './GameInfo';
 
 const computeWinner = cells => {
   const lines = [
@@ -53,10 +54,11 @@ export const Game = () => {
 
   return (
     <div className={css.game}>
-      <div className={css.game_info}>
-        {isDraw ? 'Нічия' : winnerSequence ? 'Переможець:' : 'Хід: '}{' '}
-        {!isDraw && <GameSymbol symbol={winnerSymbol ?? currentStep} />}
-      </div>
+      <GameInfo
+        isDraw={isDraw}
+        winnerSymbol={winnerSymbol}
+        currentStep={currentStep}
+      />
       <div className={css.game_field}>
         {cells.map((symbol, index) => {
           const isWinner = winnerSequence?.includes(index);
