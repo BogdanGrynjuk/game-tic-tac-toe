@@ -1,0 +1,9 @@
+.cell {
+  background-color: var(--bg-cell-color);
+  border: 0px solid transparent;
+  padding: 0;
+}
+
+.cell__win {
+  background-color: var(--winner-color);
+}

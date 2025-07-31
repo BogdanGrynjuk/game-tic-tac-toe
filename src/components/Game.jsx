@@ -1,8 +1,8 @@
 import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
 import css from './Game.module.css';
 import { useState } from 'react';
-import { GameSymbol } from './GameSymbol';
 import { GameInfo } from './GameInfo';
+import { GameCell } from './GameCell';
 
 const computeWinner = cells => {
   const lines = [
@@ -61,16 +61,14 @@ export const Game = () => {
       />
       <div className={css.game_field}>
         {cells.map((symbol, index) => {
-          const isWinner = winnerSequence?.includes(index);
           return (
-            <button
+            <GameCell
               key={index}
-              className={`${css.cell} ${isWinner ? css.cell__win : ''}`}
+              isWinner={winnerSequence?.includes(index)}
+              symbol={symbol}
+              disabled={!!winnerSequence || !!symbol}
               onClick={() => handleCellClick(index)}
-              disabled={!!winnerSequence}
-            >
-              {symbol ? <GameSymbol symbol={symbol} /> : null}
-            </button>
+            />
           );
         })}
       </div>
