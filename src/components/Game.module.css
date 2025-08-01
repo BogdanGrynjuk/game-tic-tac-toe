@@ -7,15 +7,6 @@
   width: 300px;
 }
 
-.game_field {
-  width: 280px;
-  height: 280px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
-}
-
 .reset {
   background-color: var(--bg-cell-color);
   padding: 8px 16px;

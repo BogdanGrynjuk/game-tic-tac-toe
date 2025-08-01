@@ -3,6 +3,7 @@ import css from './Game.module.css';
 import { useState } from 'react';
 import { GameInfo } from './GameInfo';
 import { GameCell } from './GameCell';
+import { GameField } from './GameField';
 
 const computeWinner = cells => {
   const lines = [
@@ -25,7 +26,9 @@ const computeWinner = cells => {
 };
 
 export const Game = () => {
-  const [cells, setCells] = useState(Array.from({ length: 9 }, () => null));
+  const [cells, setCells] = useState(
+    Array.from({ length: 9 }, () => undefined)
+  );
   const [currentStep, setCurrentStep] = useState(SYMBOL_X);
   const [winnerSequence, setWinnerSequence] = useState();
 
@@ -47,7 +50,7 @@ export const Game = () => {
   };
 
   const handleResetClick = () => {
-    setCells(Array.from({ length: 9 }, () => null));
+    setCells(Array.from({ length: 9 }, () => undefined));
     setWinnerSequence(undefined);
     setCurrentStep(SYMBOL_X);
   };
@@ -59,7 +62,7 @@ export const Game = () => {
         winnerSymbol={winnerSymbol}
         currentStep={currentStep}
       />
-      <div className={css.game_field}>
+      <GameField>
         {cells.map((symbol, index) => {
           return (
             <GameCell
@@ -71,8 +74,8 @@ export const Game = () => {
             />
           );
         })}
-      </div>
-      {(winnerSequence || !cells.includes(null)) && (
+      </GameField>
+      {(winnerSequence || !cells.includes(undefined)) && (
         <button className={css.reset} type="button" onClick={handleResetClick}>
           Очистити
         </button>

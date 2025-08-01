@@ -1,0 +1,8 @@
+.game_field {
+  width: 280px;
+  height: 280px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
