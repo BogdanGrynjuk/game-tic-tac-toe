@@ -1,43 +1,21 @@
-import { useState } from 'react';
-
 import { GameLayout } from './GameLayout';
 import { GameInfo } from './GameInfo';
 import { GameField } from './GameField';
 import { GameCell } from './GameCell';
-import { UIButton } from '../uikit/UIButton/UIButton';
+import { UIButton } from '../uikit/UIButton';
 
-import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
-import { computeWinner } from './utils/compute-winner';
+import { useGameLogic } from './hooks/use-game-logic';
 
 export const Game = () => {
-  const [cells, setCells] = useState(
-    Array.from({ length: 9 }, () => undefined)
-  );
-  const [currentStep, setCurrentStep] = useState(SYMBOL_X);
-  const [winnerSequence, setWinnerSequence] = useState();
-
-  const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
-  const isDraw = !winnerSequence && cells.filter(cell => cell).length === 9;
-
-  const handleCellClick = index => {
-    if (cells[index] || winnerSequence) {
-      return;
-    }
-
-    const cellsCopy = [...cells];
-    cellsCopy[index] = currentStep;
-    const winner = computeWinner(cellsCopy);
-
-    setCells(cellsCopy);
-    setCurrentStep(currentStep === SYMBOL_X ? SYMBOL_O : SYMBOL_X);
-    setWinnerSequence(winner);
-  };
-
-  const handleResetClick = () => {
-    setCells(Array.from({ length: 9 }, () => undefined));
-    setWinnerSequence(undefined);
-    setCurrentStep(SYMBOL_X);
-  };
+  const {
+    cells,
+    currentStep,
+    winnerSequence,
+    winnerSymbol,
+    isDraw,
+    handleCellClick,
+    handleResetClick,
+  } = useGameLogic();
 
   return (
     <GameLayout>
