@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
+import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
 import css from './GameSymbol.module.css';
 
 export const GameSymbol = ({ symbol }) => {

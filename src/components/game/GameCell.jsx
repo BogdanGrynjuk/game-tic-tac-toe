@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
 import { GameSymbol } from './GameSymbol';
-import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
+import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
 
 import css from './GameCell.module.css';
 export const GameCell = ({ isWinner, onClick, symbol, disabled }) => {

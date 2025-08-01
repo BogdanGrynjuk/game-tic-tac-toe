@@ -1,10 +1,12 @@
-import { SYMBOL_O, SYMBOL_X } from 'constants/game-symbols';
-import css from './Game.module.css';
 import { useState } from 'react';
+
+import { GameLayout } from './GameLayout';
 import { GameInfo } from './GameInfo';
-import { GameCell } from './GameCell';
 import { GameField } from './GameField';
-import { UIButton } from './uikit/UIButton/UIButton';
+import { GameCell } from './GameCell';
+import { UIButton } from '../uikit/UIButton/UIButton';
+
+import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
 
 const computeWinner = cells => {
   const lines = [
@@ -57,7 +59,7 @@ export const Game = () => {
   };
 
   return (
-    <div className={css.game}>
+    <GameLayout>
       <GameInfo
         isDraw={isDraw}
         winnerSymbol={winnerSymbol}
@@ -77,8 +79,8 @@ export const Game = () => {
         })}
       </GameField>
       {(winnerSequence || !cells.includes(undefined)) && (
-        <UIButton onClick={handleResetClick} children="Очистити" />
+        <UIButton onClick={handleResetClick}>Очистити</UIButton>
       )}
-    </div>
+    </GameLayout>
   );
 };
