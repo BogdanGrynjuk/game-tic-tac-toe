@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GameInfo } from './GameInfo';
 import { GameCell } from './GameCell';
 import { GameField } from './GameField';
+import { UIButton } from './uikit/UIButton/UIButton';
 
 const computeWinner = cells => {
   const lines = [
@@ -76,9 +77,7 @@ export const Game = () => {
         })}
       </GameField>
       {(winnerSequence || !cells.includes(undefined)) && (
-        <button className={css.reset} type="button" onClick={handleResetClick}>
-          Очистити
-        </button>
+        <UIButton onClick={handleResetClick} children="Очистити" />
       )}
     </div>
   );
