@@ -30,6 +30,7 @@ export const Game = () => {
             <GameCell
               key={index}
               isWinner={winnerSequence?.includes(index)}
+              currentStep={currentStep}
               symbol={symbol}
               disabled={!!winnerSequence || !!symbol}
               onClick={() => handleCellClick(index)}
