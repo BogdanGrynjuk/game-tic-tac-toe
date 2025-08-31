@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { GameSymbol } from './GameSymbol';
 
 import css from './GameInfo.module.css';
-import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
+import { GAME_SYMBOLS } from 'components/game/constants/game-symbols';
 
 export const GameInfo = ({ isDraw, winnerSymbol, currentStep }) => {
   if (isDraw) {
@@ -28,6 +28,7 @@ export const GameInfo = ({ isDraw, winnerSymbol, currentStep }) => {
 
 GameInfo.propTypes = {
   isDraw: PropTypes.bool.isRequired,
-  winnerSymbol: PropTypes.oneOf([SYMBOL_O, SYMBOL_X]),
-  currentStep: PropTypes.oneOf([SYMBOL_O, SYMBOL_X]).isRequired,
+  winnerSymbol: PropTypes.oneOf([GAME_SYMBOLS.ZERO, GAME_SYMBOLS.CROSS]),
+  currentStep: PropTypes.oneOf([GAME_SYMBOLS.ZERO, GAME_SYMBOLS.CROSS])
+    .isRequired,
 };

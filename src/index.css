@@ -3,8 +3,8 @@
   --bg-cell-color: #2d2d2d;
   --text-color: #d6d6d6;
   --winner-color: #ff000060;
-  --symbol--x-color: #ea580c;
-  --symbol--o-color: #0d9488;
+  --symbol--cross-color: #ea580c;
+  --symbol--zero-color: #0d9488;
 }
 
 *,

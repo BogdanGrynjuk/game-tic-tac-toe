@@ -1,2 +1,4 @@
-export const SYMBOL_X = 'X';
-export const SYMBOL_O = 'O';
+export const GAME_SYMBOLS = {
+  ZERO: 'zero',
+  CROSS: 'cross',
+};

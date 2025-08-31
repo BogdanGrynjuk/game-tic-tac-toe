@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { SYMBOL_O, SYMBOL_X } from 'components/game/constants/game-symbols';
+import { GAME_SYMBOLS } from 'components/game/constants/game-symbols';
 import { computeWinner } from '../utils/compute-winner';
 
 export const useGameLogic = () => {
   const [cells, setCells] = useState(Array(9).fill(undefined));
-  const [currentStep, setCurrentStep] = useState(SYMBOL_X);
+  const [currentStep, setCurrentStep] = useState(GAME_SYMBOLS.CROSS);
   const [winnerSequence, setWinnerSequence] = useState();
 
   const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
@@ -18,14 +18,18 @@ export const useGameLogic = () => {
     const winner = computeWinner(cellsCopy);
 
     setCells(cellsCopy);
-    setCurrentStep(currentStep === SYMBOL_X ? SYMBOL_O : SYMBOL_X);
+    setCurrentStep(
+      currentStep === GAME_SYMBOLS.CROSS
+        ? GAME_SYMBOLS.ZERO
+        : GAME_SYMBOLS.CROSS
+    );
     setWinnerSequence(winner);
   };
 
   const handleResetClick = () => {
     setCells(Array(9).fill(undefined));
     setWinnerSequence(undefined);
-    setCurrentStep(SYMBOL_X);
+    setCurrentStep(GAME_SYMBOLS.CROSS);
   };
 
   return {

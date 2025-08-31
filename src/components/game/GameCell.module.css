@@ -1,9 +1,12 @@
 .cell {
   background-color: var(--bg-cell-color);
   border: 0px solid transparent;
-  padding: 0;
+  padding: 15%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell::before {
