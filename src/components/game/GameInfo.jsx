@@ -5,6 +5,7 @@ import { GameSymbol } from './GameSymbol';
 
 import css from './GameInfo.module.css';
 import { GAME_SYMBOLS } from 'components/game/constants/game-symbols';
+import { PlayerInfo } from './PlayerInfo';
 
 export const GameInfo = ({ isDraw, winnerSymbol, currentStep }) => {
   if (isDraw) {
@@ -20,9 +21,21 @@ export const GameInfo = ({ isDraw, winnerSymbol, currentStep }) => {
   }
 
   return (
-    <p className={css.game_info}>
-      Хід: <GameSymbol symbol={currentStep} />
-    </p>
+    // <p className={css.game_info}>
+    //   Хід: <GameSymbol symbol={currentStep} />
+    // </p>
+    <div className={css.game_info}>
+      <PlayerInfo playerName={'Гравець 1'} symbol={GAME_SYMBOLS.CROSS} />
+      <PlayerInfo playerName={'Гравець 2'} symbol={GAME_SYMBOLS.ZERO} />
+      {/* <div>
+        <p>Player 1</p>
+        <GameSymbol symbol={GAME_SYMBOLS.CROSS} />
+      </div>
+      <div>
+        <p>Player 2</p>
+        <GameSymbol symbol={GAME_SYMBOLS.ZERO} />
+      </div> */}
+    </div>
   );
 };
 

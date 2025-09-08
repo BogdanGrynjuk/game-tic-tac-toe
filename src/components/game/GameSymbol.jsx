@@ -7,7 +7,7 @@ import css from './GameSymbol.module.css';
 import { CrossIcon } from './icons/CrossIcon';
 import { ZeroIcon } from './icons/ZeroIcon';
 
-export function GameSymbol({ symbol, variant = 'medium' }) {
+export const GameSymbol = ({ symbol, variant = 'medium' }) => {
   const Icon =
     {
       [GAME_SYMBOLS.CROSS]: CrossIcon,
@@ -15,7 +15,7 @@ export function GameSymbol({ symbol, variant = 'medium' }) {
     }[symbol] ?? CrossIcon;
 
   return <Icon className={clsx(css.symbol, css[`symbol--${variant}`])} />;
-}
+};
 
 GameSymbol.propTypes = {
   symbol: PropTypes.oneOf([GAME_SYMBOLS.ZERO, GAME_SYMBOLS.CROSS]).isRequired,

@@ -1,0 +1,64 @@
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spin {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+.grid_container {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'player_name player_name'
+    'symbol timer';
+  grid-template-columns: 1fr 1fr;
+  padding: 8px;
+  width: 100%;
+
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-color);
+
+  background: repeating-conic-gradient(
+    from var(--angle),
+    var(--highlight-color) 0%,
+    var(--highlight-color) 10%,
+    transparent 10%,
+    transparent 50%
+  );
+
+  animation: spin 5s linear infinite;
+  z-index: -2;
+}
+
+.grid_container::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background-color: var(--bg-cell-color);
+  z-index: -1;
+}
+
+.grid_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid_item1 {
+  grid-area: player_name;
+}
+.grid_item2 {
+  grid-area: symbol;
+}
+.grid_item3 {
+  grid-area: timer;
+}
